@@ -1,0 +1,83 @@
+
+env int desiredValue = 21;
+reactiveclass Controller(8){
+	knownrebecs{
+            Heater heater;
+            Cooler cooler;
+	}
+	statevars{
+            boolean heaterOn;
+            boolean coolerOn;}
+	Controller() {heaterOn = false;coolerOn = false;}
+	msgsrv getSense(int temp){
+            if (temp == desiredValue) {
+                if(heaterOn) {heaterOn = false;heater.turn_Off();}
+                else if(coolerOn) {coolerOn = false;cooler.turn_Off();}
+            } if (desiredValue < temp ) 
+                {cooler.turn_On();coolerOn = true;} 
+            else if (desiredValue > temp ) 
+                {heater.turn_On();heaterOn = true;}    
+	}
+}
+reactiveclass Room(8){
+	knownrebecs{
+            Sensor sensor;
+	}
+	statevars{
+            int temperature;
+            int window;}
+	Room(){
+            //initial value
+            temperature = 22; 
+            window = 0; //closed
+		}		
+	msgsrv Status() { 
+            if (temperature == desiredValue) {
+                window = ?(1,0);
+                temperature = temperature - window;
+                sensor.Sense(temperature); 
+            } else sensor.Sense(temperature);
+	}
+//equation to regulate temperature 
+msgsrv Heating() { temperature = temperature + 1;}
+msgsrv Cooling() { temperature = temperature - 1;}
+}
+reactiveclass Sensor(8){	
+	knownrebecs{
+            Room room;
+            Controller controller;
+	}
+	Sensor(){
+            self.start();
+	}
+	msgsrv start(){
+            room.Status();
+	}
+	msgsrv Sense(int temp) {
+            controller.getSense(temp);
+             //time interval
+            room.Status() after(1);
+	}
+}
+reactiveclass Heater(8){
+	knownrebecs{
+            Room room;
+	}
+	msgsrv turn_On(){ room.Heating();}
+	msgsrv turn_Off(){ }
+}
+
+reactiveclass Cooler(8){
+	knownrebecs{
+            Room room;
+	}
+	msgsrv turn_On(){ room.Cooling();}
+	msgsrv turn_Off(){ }
+}
+main{
+	Room room(sensor):();
+	Controller controller(heater,cooler):(); 
+	Sensor sensor(room,controller):();
+	Heater heater(room):();
+	Cooler cooler(room):();
+}
