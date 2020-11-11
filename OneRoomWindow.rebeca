@@ -1,0 +1,76 @@
+
+env int desiredValue = 21;
+reactiveclass Controller(8){
+	knownrebecs{
+            Heater heater;
+            Cooler cooler;
+	}
+	msgsrv getSense(int temp){
+            if (temp == desiredValue) {
+            //nothing to do
+            } if (desiredValue < temp ) 
+                {cooler.Cool();} 
+            else if (desiredValue > temp ) 
+                {heater.Heat();}    
+	}
+}
+reactiveclass Room(8){
+	knownrebecs{
+            Sensor sensor;
+	}
+	statevars{
+            int temperature;
+            int window;}
+	Room(){
+            //initial value
+            temperature = 22; 
+            window = 0; //closed
+		}		
+	msgsrv Status() { 
+            if (temperature == desiredValue) {
+                window = ?(1,0);
+                temperature = temperature - window;
+                sensor.Sense(temperature); 
+            } else sensor.Sense(temperature);
+	}
+//equation to regulate temperature 
+msgsrv Heat() { temperature = temperature + 1;}
+msgsrv Cool() { temperature = temperature - 1;}
+}
+reactiveclass Sensor(8){	
+	knownrebecs{
+            Room room;
+            Controller controller;
+	}
+	Sensor(){
+            self.start();
+	}
+	msgsrv start(){
+            room.Status();
+	}
+	msgsrv Sense(int temp) {
+            controller.getSense(temp);
+             //time interval
+            room.Status() after(1);
+	}
+}
+reactiveclass Heater(8){
+	knownrebecs{
+            Room room;
+	}
+	msgsrv Heat(){ room.Heat();}
+}
+
+reactiveclass Cooler(8){
+	knownrebecs{
+            Room room;
+	}
+	msgsrv Cool(){ room.Cool();}
+}
+main{
+	Room room(sensor):();
+	Controller controller(heater,cooler):(); 
+	Sensor sensor(room,controller):();
+	Heater heater(room):();
+	Cooler cooler(room):();
+}

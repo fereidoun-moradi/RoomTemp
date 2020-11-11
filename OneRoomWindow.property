@@ -1,0 +1,17 @@
+property {
+	define {
+		temp_22 = room.temperature == 22;
+		temp_23 = room.temperature == 23;
+		temp_24 = room.temperature == 24;
+		temp_25 = room.temperature == 25;
+		temp_26 = room.temperature == 26;
+		temp_21 = room.temperature == 21;
+		temp_20 = room.temperature == 20;
+		temp_19 = room.temperature == 19;
+		temp_18 = room.temperature == 18;
+
+		Window_Closed = room.window == 0;
+		Window_Open = room.window == 1;
+	}
+
+}
