@@ -10,5 +10,4 @@ Abstracted version of the input state-space (<a href="https://github.com/fereido
 
 # Lingua Franca
 Lingua Franca programing language is used to develop an executable file. The <a href="https://github.com/fereidoun-moradi/RoomTemp/blob/main/Temperature_Control_System.lf">code</a> is compiled by Lingua Franca compiler.
-The code diagram shows the reactors and the reactions.
-
+The code <a href="https://github.com/fereidoun-moradi/RoomTemp/blob/main/RoomTemp_Monitor_compSensor.jpeg">diagram</a> shows the reactors and the reactions.
