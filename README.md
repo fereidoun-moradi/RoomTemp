@@ -9,6 +9,6 @@ Input lists of variables and label of transitions: <a href="https://github.com/f
 Abstracted version of the input state-space (<a href="https://github.com/fereidoun-moradi/RoomTemp/blob/main/miniModel.jpg">state transition diagram</a>): <a href="https://github.com/fereidoun-moradi/RoomTemp/blob/main/miniModel.statespace">ABM</a>
 
 # Lingua Franca
-Lingua Franca programing language is used to develop an executable file. The code is compiled by Lingua Franca compiler.
+Lingua Franca programing language is used to develop an executable file. The <a href="https://github.com/fereidoun-moradi/RoomTemp/blob/main/Temperature_Control_System.lf">code</a> is compiled by Lingua Franca compiler.
 The code diagram shows the reactors and the reactions.
 
