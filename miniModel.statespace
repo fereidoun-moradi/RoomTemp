@@ -1,0 +1,693 @@
+<transitionsystem>
+<state id="1_0" atomicpropositions="s_21,h_false,c_false," >
+	<rebec name="room">
+		<statevariables>
+			<variable name="Room.temperature" type="int">22</variable>
+			<variable name="Room.cold_air_blowing" type="int">0</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="controller">
+		<statevariables>
+			<variable name="Controller.sensedValue" type="int">21</variable>
+			<variable name="Controller.heating" type="boolean">false</variable>
+			<variable name="Controller.cooling" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="sensor">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="0" deadline="infinity" sender="sensor">start()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="hc_unit">
+		<statevariables>
+			<variable name="HC_Unit.heater_on" type="boolean">false</variable>
+			<variable name="HC_Unit.cooler_on" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="5_0" atomicpropositions="s_22,h_false,c_false," >
+	<rebec name="room">
+		<statevariables>
+			<variable name="Room.temperature" type="int">22</variable>
+			<variable name="Room.cold_air_blowing" type="int">0</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="hc_unit">cooling()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="controller">
+		<statevariables>
+			<variable name="Controller.sensedValue" type="int">22</variable>
+			<variable name="Controller.heating" type="boolean">false</variable>
+			<variable name="Controller.cooling" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="hc_unit">cooling()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="sensor">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="hc_unit">cooling()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="hc_unit">
+		<statevariables>
+			<variable name="HC_Unit.heater_on" type="boolean">false</variable>
+			<variable name="HC_Unit.cooler_on" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="hc_unit">cooling()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="0" deadline="infinity" sender="controller">activate_c()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="6_0" atomicpropositions="s_22,h_false,c_true," >
+	<rebec name="room">
+		<statevariables>
+			<variable name="Room.temperature" type="int">21</variable>
+			<variable name="Room.cold_air_blowing" type="int">0</variable>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="controller">
+		<statevariables>
+			<variable name="Controller.sensedValue" type="int">22</variable>
+			<variable name="Controller.heating" type="boolean">false</variable>
+			<variable name="Controller.cooling" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="sensor">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="hc_unit">
+		<statevariables>
+			<variable name="HC_Unit.heater_on" type="boolean">false</variable>
+			<variable name="HC_Unit.cooler_on" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="8_0" atomicpropositions="s_22,h_false,c_true," >
+	<rebec name="room">
+		<statevariables>
+			<variable name="Room.temperature" type="int">21</variable>
+			<variable name="Room.cold_air_blowing" type="int">0</variable>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>1</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="controller">
+		<statevariables>
+			<variable name="Controller.sensedValue" type="int">22</variable>
+			<variable name="Controller.heating" type="boolean">false</variable>
+			<variable name="Controller.cooling" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>1</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="sensor">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>1</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="hc_unit">
+		<statevariables>
+			<variable name="HC_Unit.heater_on" type="boolean">false</variable>
+			<variable name="HC_Unit.cooler_on" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>1</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="13_0" atomicpropositions="s_20,h_false,c_true," >
+	<rebec name="room">
+		<statevariables>
+			<variable name="Room.temperature" type="int">20</variable>
+			<variable name="Room.cold_air_blowing" type="int">1</variable>
+		</statevariables>
+		<queue>
+			<message arrival="1" deadline="infinity" sender="hc_unit">heating()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>1</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="controller">
+		<statevariables>
+			<variable name="Controller.sensedValue" type="int">20</variable>
+			<variable name="Controller.heating" type="boolean">true</variable>
+			<variable name="Controller.cooling" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="1" deadline="infinity" sender="hc_unit">heating()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>1</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="sensor">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="1" deadline="infinity" sender="hc_unit">heating()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>1</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="hc_unit">
+		<statevariables>
+			<variable name="HC_Unit.heater_on" type="boolean">false</variable>
+			<variable name="HC_Unit.cooler_on" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="1" deadline="infinity" sender="hc_unit">heating()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="1" deadline="infinity" sender="controller">activate_h()</message>
+		</queue>
+		<now>1</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="14_0" atomicpropositions="s_21,h_false,c_true," >
+	<rebec name="room">
+		<statevariables>
+			<variable name="Room.temperature" type="int">21</variable>
+			<variable name="Room.cold_air_blowing" type="int">0</variable>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>1</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="controller">
+		<statevariables>
+			<variable name="Controller.sensedValue" type="int">21</variable>
+			<variable name="Controller.heating" type="boolean">false</variable>
+			<variable name="Controller.cooling" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>1</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="sensor">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>1</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="hc_unit">
+		<statevariables>
+			<variable name="HC_Unit.heater_on" type="boolean">false</variable>
+			<variable name="HC_Unit.cooler_on" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="1" deadline="infinity" sender="controller">switchoff()</message>
+		</queue>
+		<now>1</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="15_0" atomicpropositions="s_20,h_true,c_false," >
+	<rebec name="room">
+		<statevariables>
+			<variable name="Room.temperature" type="int">21</variable>
+			<variable name="Room.cold_air_blowing" type="int">1</variable>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="hc_unit">heating()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>1</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="controller">
+		<statevariables>
+			<variable name="Controller.sensedValue" type="int">20</variable>
+			<variable name="Controller.heating" type="boolean">true</variable>
+			<variable name="Controller.cooling" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="hc_unit">heating()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>1</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="sensor">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="hc_unit">heating()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>1</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="hc_unit">
+		<statevariables>
+			<variable name="HC_Unit.heater_on" type="boolean">true</variable>
+			<variable name="HC_Unit.cooler_on" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="hc_unit">heating()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>1</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="17_0" atomicpropositions="s_21,h_false,c_false," >
+	<rebec name="room">
+		<statevariables>
+			<variable name="Room.temperature" type="int">21</variable>
+			<variable name="Room.cold_air_blowing" type="int">0</variable>
+		</statevariables>
+		<queue>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>1</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="controller">
+		<statevariables>
+			<variable name="Controller.sensedValue" type="int">21</variable>
+			<variable name="Controller.heating" type="boolean">false</variable>
+			<variable name="Controller.cooling" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>1</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="sensor">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>1</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="hc_unit">
+		<statevariables>
+			<variable name="HC_Unit.heater_on" type="boolean">false</variable>
+			<variable name="HC_Unit.cooler_on" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>1</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="18_0" atomicpropositions="s_21,h_false,c_false," >
+	<rebec name="room">
+		<statevariables>
+			<variable name="Room.temperature" type="int">22</variable>
+			<variable name="Room.cold_air_blowing" type="int">0</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="hc_unit">cooling()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="controller">
+		<statevariables>
+			<variable name="Controller.sensedValue" type="int">21</variable>
+			<variable name="Controller.heating" type="boolean">false</variable>
+			<variable name="Controller.cooling" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="hc_unit">cooling()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="sensor">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="hc_unit">cooling()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="hc_unit">
+		<statevariables>
+			<variable name="HC_Unit.heater_on" type="boolean">false</variable>
+			<variable name="HC_Unit.cooler_on" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="hc_unit">cooling()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="1" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="0" deadline="infinity" sender="controller">activate_c()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="19_0" atomicpropositions="s_20,h_true,c_false," >
+	<rebec name="room">
+		<statevariables>
+			<variable name="Room.temperature" type="int">21</variable>
+			<variable name="Room.cold_air_blowing" type="int">1</variable>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="hc_unit">heating()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="2" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="controller">
+		<statevariables>
+			<variable name="Controller.sensedValue" type="int">20</variable>
+			<variable name="Controller.heating" type="boolean">true</variable>
+			<variable name="Controller.cooling" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="hc_unit">heating()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="sensor">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="hc_unit">heating()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="hc_unit">
+		<statevariables>
+			<variable name="HC_Unit.heater_on" type="boolean">true</variable>
+			<variable name="HC_Unit.cooler_on" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="2" deadline="infinity" sender="hc_unit">heating()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="31_0" atomicpropositions="s_21,h_true,c_false," >
+	<rebec name="room">
+		<statevariables>
+			<variable name="Room.temperature" type="int">21</variable>
+			<variable name="Room.cold_air_blowing" type="int">1</variable>
+		</statevariables>
+		<queue>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="controller">
+		<statevariables>
+			<variable name="Controller.sensedValue" type="int">21</variable>
+			<variable name="Controller.heating" type="boolean">true</variable>
+			<variable name="Controller.cooling" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="sensor">
+		<statevariables>
+		</statevariables>
+		<queue>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="hc_unit">
+		<statevariables>
+			<variable name="HC_Unit.heater_on" type="boolean">true</variable>
+			<variable name="HC_Unit.cooler_on" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="3" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="40_0" atomicpropositions="s_20,h_false,c_false," >
+	<rebec name="room">
+		<statevariables>
+			<variable name="Room.temperature" type="int">20</variable>
+			<variable name="Room.cold_air_blowing" type="int">1</variable>
+		</statevariables>
+		<queue>
+			<message arrival="4" deadline="infinity" sender="sensor">status()</message>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="controller">
+		<statevariables>
+			<variable name="Controller.sensedValue" type="int">20</variable>
+			<variable name="Controller.heating" type="boolean">false</variable>
+			<variable name="Controller.cooling" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="sensor">
+		<statevariables>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="hc_unit">
+		<statevariables>
+			<variable name="HC_Unit.heater_on" type="boolean">false</variable>
+			<variable name="HC_Unit.cooler_on" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>2</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="1_0" destination="5_0" executionTime="0" shift="0"> <messageserver sender="sensor" owner="controller" title="GETSENSE"/></transition>
+<transition source="5_0" destination="6_0" executionTime="0" shift="0"> <messageserver sender="controller" owner="hc_unit" title="ACTIVATE_C"/></transition>
+<transition source="6_0" destination="8_0" executionTime="0" shift="0"> <time value="1"/></transition>
+<transition source="8_0" destination="13_0" executionTime="1" shift="0"> <messageserver sender="sensor" owner="controller" title="GETSENSE"/></transition>
+<transition source="8_0" destination="14_0" executionTime="1" shift="0"> <messageserver sender="sensor" owner="controller" title="GETSENSE"/></transition>
+<transition source="14_0" destination="17_0" executionTime="1" shift="0"> <messageserver sender="controller" owner="hc_unit" title="SWITCHOFF"/></transition>
+<transition source="13_0" destination="15_0" executionTime="1" shift="0"> <messageserver sender="controller" owner="hc_unit" title="ACTIVATE_H"/></transition>
+<transition source="15_0" destination="19_0" executionTime="1" shift="0"> <time value="1"/></transition>
+<transition source="19_0" destination="15_0" executionTime="2" shift="0"> <messageserver sender="sensor" owner="controller" title="GETSENSE"/></transition>
+<transition source="19_0" destination="31_0" executionTime="2" shift="0"> <messageserver sender="sensor" owner="controller" title="GETSENSE"/></transition>
+<transition source="31_0" destination="17_0" executionTime="1" shift="0"> <messageserver sender="controller" owner="hc_unit" title="SWITCHOFF"/></transition>
+<transition source="18_0" destination="40_0" executionTime="2" shift="1"> <messageserver sender="sensor" owner="controller" title="GETSENSE"/></transition>
+<transition source="40_0" destination="15_0" executionTime="2" shift="0"> <messageserver sender="controller" owner="hc_unit" title="ACTIVATE_H"/></transition>
+<transition source="17_0" destination="18_0" executionTime="1" shift="0"> <time value="1"/></transition>
+<transition source="18_0" destination="17_0" executionTime="2" shift="1"> <messageserver sender="sensor" owner="controller" title="GETSENSE"/></transition>
+</transitionsystem>
