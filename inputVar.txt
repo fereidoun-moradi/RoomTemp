@@ -3,5 +3,5 @@
 "AC_Unit.heater_on"
 "AC_Unit.cooler_on"
 now
-miniModel_OneRoomTemp_Github_A3.statespace
+miniModel.statespace
 0
