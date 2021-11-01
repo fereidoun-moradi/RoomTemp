@@ -1,4 +1,6 @@
-# RoomTemp
+# Temperature Control System
+
+# Timed Rebeca
 The developed  <a href="https://github.com/fereidoun-moradi/RoomTemp/blob/main/OneRoomTemp_Github.statespace">Timed Rebeca model</a> includes the model of main components of a temperature control system that regulates the temperature of a room. The <a href="https://github.com/fereidoun-moradi/RoomTemp/blob/main/OneRoomTemp_Github.jpg">state transition diagram</a> of the model shows the states and transitions. 
 
 # Abstraction
