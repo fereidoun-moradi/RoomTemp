@@ -1,7 +1,7 @@
 4
 "Controller.sensedValue"
-"AC_Unit.heater_on"
-"AC_Unit.cooler_on"
-now
+"HC_Unit.heater_on"
+"HC_Unit.cooler_on"
+"now"
 OneRoomTemp_Github.statespace
 0
