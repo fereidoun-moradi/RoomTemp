@@ -17,7 +17,7 @@ The code <a href="https://github.com/fereidoun-moradi/RoomTemp/blob/main/RoomTem
 
 
 
-# Cast_Function
+# ltscat tool (maps the State Space to LTS)
 
 
 ![toolset3](https://user-images.githubusercontent.com/45528113/199219377-742ded4c-0063-4347-8961-4504f5b6f01e.jpg)
