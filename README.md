@@ -1,4 +1,4 @@
-# Temperature Control System case study
+# Case Study: Temperature Control System 
 
 The developed  <a href="https://github.com/fereidoun-moradi/RoomTemp/blob/main/OneRoomTemp_Github.rebeca">Timed Rebeca model</a> includes the model of main components of a temperature control system that regulates the temperature of a room. 
 The initial configuration of the system: the desired temprature value in the controller sets to the value 22. The window in the room is close so that the outside cold air does not blow inside. The temprature value is increasing in the room. 
