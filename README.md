@@ -11,7 +11,7 @@ The regulation value is used to control the heating and cooling process through 
 
 
 
-The Timed Rebca model augmented with attacks. The written safety properties for the system as follows. 
+The Timed Rebca model augmented with attacks. The written safety properties for the system are as follows. 
 
 <a href="https://github.com/fereidoun-moradi/RoomTemp/blob/main/TCS_attackmodels.rebeca">Timed Rebeca model</a>
 
