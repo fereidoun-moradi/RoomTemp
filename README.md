@@ -9,6 +9,14 @@ The temperature control system is responsible for maintaining the temperature of
 The physical process is temperature regulation, and the desired states show the temperature value in the range. 
 The regulation value is used to control the heating and cooling process through the hc\_unit when it is turned on by the controller.
 
+
+
+The Timed Rebca model augmented with attacks. The written safety properties for the system as follows. 
+
+<a href="https://github.com/fereidoun-moradi/cast_function/blob/main/castfunction_variables">Timed Rebeca model</a>
+<a href="https://github.com/fereidoun-moradi/cast_function/blob/main/castfunction_variables">Properties</a>
+
+
 # ltscast tool (maps the State Space to LTS)
 
 ![toolset3](https://user-images.githubusercontent.com/45528113/199219377-742ded4c-0063-4347-8961-4504f5b6f01e.jpg)
