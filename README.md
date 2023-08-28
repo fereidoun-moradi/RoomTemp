@@ -11,11 +11,17 @@ The regulation value is used to control the heating and cooling process through 
 
 
 
-The Timed Rebca model augmented with attacks. The written safety properties for the system are as follows. 
+The Timed Rebca model is augmented with attacks. The written safety properties for the system are as follows. 
 
 <a href="https://github.com/fereidoun-moradi/RoomTemp/blob/main/TCS_attackmodels.rebeca">Timed Rebeca model</a>
 
 <a href="https://github.com/fereidoun-moradi/RoomTemp/blob/main/TCS_attackmodels.property">Properties</a>
+
+
+
+<img width="431" alt="Screenshot 2023-08-28 at 19 32 37" src="https://github.com/fereidoun-moradi/RoomTemp/assets/45528113/0b754a29-cddc-4371-b2f8-ae3221cc3c39">
+
+
 
 
 # ltscast tool (maps the State Space to LTS)
